@@ -83,17 +83,12 @@ public class Product {
      */
     public void setProductName(String productName)
     {
-        if (productName == null)
+        if(productName != null)
         {
-            this.productName = "";
-        }
-        else if (productName.length() <= 20)
-        {
-            this.productName = productName;
-        }
-        else
-        {
-            this.productName = productName.substring(0,20);
+            if (productName.length() <= 20 && !productName.isEmpty())
+            {
+                this.productName = productName;
+            }
         }
     }
     /**
@@ -125,8 +120,11 @@ public class Product {
     //  "Product description: Flatscreen TV  product code: 2000  unit cost: 1000 and currently in product line: Y"
 
     {
+        String isIn = "N";
+        if(isInCurrentProductLine())
+            isIn = "Y";
         return "Product description: "+ getProductName() +" product code: "+ getProductCode() + "  unit cost: "
-                + getUnitCost() +" and currently in product line: "+ isInCurrentProductLine();
+                + getUnitCost() +" and currently in product line: "+ isIn;
     }
 
 }
